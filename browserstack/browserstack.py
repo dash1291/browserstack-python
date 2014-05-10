@@ -29,14 +29,18 @@ def _send_request(url, auth, method='GET', data=None):
 
 def _handle_errors(response):
     if response.status_code == 401:
-        raise APIException(401, 'Auth failed.')
+        ex = APIException(401, 'Auth failed.')
 
     elif response.status_code == 422:
-        raise(APIException(422, 'Invalid request', response.text))
+        ex = APIException(422, 'Invalid request', response.text)
+
+    print ex.message
+    raise ex
 
 
 class Worker():
     def __init__(self, base, worker_id):
+        # Reference to the BrowserStack object.
         self.base = base
         self.worker_url = base.base_url + '/worker/%s' % worker_id
 
