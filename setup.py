@@ -8,6 +8,7 @@ setup(
     author_email="ashish.dubey91@gmail.com",
     packages=['browserstack', ],
     license='MIT',
-    long_description='Python wrapper for BrowserStack REST API.',
+    description="Python wrapper for BrowserStack REST API.",
+    long_description=open('README.md', 'r').read(),
     install_requires=['requests', ],
 )
